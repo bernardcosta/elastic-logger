@@ -1,0 +1,1 @@
+module.exports.levels = ["DEBUG", "INFO", "WARNING", "ERROR"]
