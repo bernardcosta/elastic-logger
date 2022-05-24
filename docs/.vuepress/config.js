@@ -28,6 +28,7 @@ module.exports = {
     repo: 'https://github.com/bernardcosta/elastic-logger',
     repoLabel: 'Repository',
     search: true,
+    logo:'/images/logger-trans3.png',
     navbar: [...nav,
     //   {
     //   text: 'API playground',
@@ -64,5 +65,12 @@ module.exports = {
       rel: 'stylesheet',
       href: 'https://fonts.googleapis.com/css?family=Open+Sans|Raleway:300,400'
     }],
+  ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/elastic-logger/assets/favicons/favicon-32x32.png"}],
+  ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/elastic-logger/assets/favicons/favicon-16x16.png"}],
+  ['link', { rel: "manifest", href: "/elastic-logger/assets/favicons/manifest.json"}],
+  ['link', { rel: "shortcut icon", href: "/elastic-logger/assets/favicons/favicon.ico"}],
+  ['meta', { name: "msapplication-TileColor", content: "#3a0839"}],
+  ['meta', { name: "msapplication-config", content: "/elastic-logger/assets/favicons/browserconfig.xml"}],
+  ['meta', { name: "theme-color", content: "#ffffff"}],
   ]
 }
