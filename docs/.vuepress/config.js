@@ -20,6 +20,7 @@ module.exports = {
   lang: 'en-US',
   smoothScroll: true, //vuepress feature not yet released
   title: 'elastic logger',
+  base: '/elastic-logger/',
   // theme and its config
   theme: defaultTheme({
     // logo: '/images/logo.webp', //https://www.virail.com/v4/images/logo-green.svg',
