@@ -1,20 +1,6 @@
 const { searchPlugin } = require('@vuepress/plugin-search')
 const { defaultTheme } = require('vuepress')
 
-let nav = [{
-  text: 'Home',
-  link: '/',
-  children: [{
-    text: 'Introduction',
-    link: '/introduction.md'
-  },
-    {
-      text: 'API Reference',
-      link: '/api-guide.md'
-    }]
-},
-]
-
 module.exports = {
   // site config
   lang: 'en-US',
@@ -23,19 +9,16 @@ module.exports = {
   base: '/elastic-logger/',
   // theme and its config
   theme: defaultTheme({
-    // logo: '/images/logo.webp', //https://www.virail.com/v4/images/logo-green.svg',
-    // logoDark: '/images/logo-green.png',
     repo: 'https://github.com/bernardcosta/elastic-logger',
     repoLabel: 'Repository',
     search: true,
     logo:'/images/logger-trans3.png',
-    navbar: [...nav,
-    //   {
-    //   text: 'API playground',
-    //   link: 'https://mapping.virail.app/docs'
-    // }
+    navbar: [{
+      text: 'API Reference',
+      link: '/api-guide.md'
+    }
     ],
-    sidebar: nav,
+    // sidebar: nav,
 
   }),
   plugins: [
@@ -67,7 +50,15 @@ module.exports = {
     }],
   ['link', { rel: "icon", type: "image/png", sizes: "32x32", href: "/elastic-logger/assets/favicons/favicon-32x32.png"}],
   ['link', { rel: "icon", type: "image/png", sizes: "16x16", href: "/elastic-logger/assets/favicons/favicon-16x16.png"}],
-  ['link', { rel: "manifest", href: "/elastic-logger/assets/favicons/manifest.json"}],
+    ['link', { rel: "apple-touch-icon", sizes: "180x180", href: "/elastic-logger/assets/favicons/apple-touch-icon-180x180.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "152x152", href: "/elastic-logger/assets/favicons/apple-touch-icon-152x152.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "144x144", href: "/elastic-logger/assets/favicons/apple-touch-icon-144x144.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "120x120", href: "/elastic-logger/assets/favicons/apple-touch-icon-120x120.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "57x57", href: "/elastic-logger/assets/favicons/apple-touch-icon-57x57.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "60x60", href: "/elastic-logger/assets/favicons/apple-touch-icon-60x60.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "72x72", href: "/elastic-logger/assets/favicons/apple-touch-icon-72x72.png"}],
+    ['link', { rel: "apple-touch-icon", sizes: "114x114", href: "/elastic-logger/assets/favicons/apple-touch-icon-114x114.png"}],
+    ['link', { rel: "manifest", href: "/elastic-logger/assets/favicons/manifest.json"}],
   ['link', { rel: "shortcut icon", href: "/elastic-logger/assets/favicons/favicon.ico"}],
   ['meta', { name: "msapplication-TileColor", content: "#3a0839"}],
   ['meta', { name: "msapplication-config", content: "/elastic-logger/assets/favicons/browserconfig.xml"}],
