@@ -32,7 +32,7 @@ module.exports = {
           _id: data.body._id
         })
       }).catch((err) => {
-        conosole.error(err)
+        console.error(err)
         res.status(500).json({
           status: err.status,
           message: err.message

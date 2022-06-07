@@ -19,7 +19,7 @@ Use this endpoint to log results to `elasticsearch` server instance.
 Example:
 ```shell script
 curl --request POST \
-  --url http://localhost:3000/DEBUG/MyApp \
+  --url <your_url>/DEBUG/MyApp \
   --header 'Content-Type: application/json' \
   --data '{
         	"code": 200,
