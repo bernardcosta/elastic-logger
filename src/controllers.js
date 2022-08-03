@@ -15,16 +15,18 @@ module.exports = {
         .replace('d', today.getDate())
 
       let index = `applogs-${req.params.channel}-${strDate}`
+      let message = req.body.message
+      // remove message from the body output
+      delete req.body['message']
       client.index({
         index: index,
         body: {
           '@timestamp': new Date(),
-          '@channel': req.params.channel,
-          '@level': {
-            'name': req.params.level
-          },
+          'channel': req.params.channel,
+          'level_name': req.params.level,
           '@headers': req.headers,
-          '@payload': req.body
+          'context': req.body,
+          'message': message
         }
       }).then((data) => {
         res.send({
