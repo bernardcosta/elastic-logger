@@ -21,8 +21,6 @@ services:
   logstash:
     image: docker.elastic.co/logstash/logstash:7.14.1
     container_name: logsapi.logstash
-    depends_on:
-      - redis
     restart: unless-stopped
     hostname: logstash
     volumes:
