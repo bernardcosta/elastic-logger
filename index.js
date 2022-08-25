@@ -11,8 +11,8 @@ const expressWinston = require('express-winston');
 const app = express()
 const port = process.env.APP_PORT || 3000
 
-app.use(bodyParser.json()) // for parsing application/json
-app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
+app.use(bodyParser.json({ limit: "50mb" })) // for parsing application/json
+app.use(bodyParser.urlencoded({ limit: "50mb", extended: true, parameterLimit: 50000})) // for parsing application/x-www-form-urlencoded
 
 app.use(expressWinston.logger({
     transports: [
