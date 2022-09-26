@@ -1,4 +1,5 @@
 const config = require('./config')
+const Sentry = require('@sentry/node')
 
 module.exports = {
   // send all errors to output in application/json format
@@ -16,12 +17,13 @@ module.exports = {
     res.status(err.status || 500).json(out)
   },
   validateLevels: (req, res, next) => {
-    if (!config.levels.includes(req.params.level)) {
-      console.log('levels', config.levels)
-      throw {
-        status: 400,
-        message: `level has to be one of ${config.levels}`
+    try {
+      if (!config.levels.includes(req.params.level)) {
+        console.log('levels', config.levels)
+        throw new Error(`level has to be one of ${config.levels}`)
       }
+    } catch (err) {
+      next(err)
     }
     next()
   }

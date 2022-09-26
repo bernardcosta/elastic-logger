@@ -33,13 +33,7 @@ module.exports = {
           status: "success",
           _id: data.body._id
         })
-      }).catch((err) => {
-        console.log(err)
-        res.status(500).json({
-          status: err.status,
-          message: err.message
-        })
-      })
+      }).catch(next)
     } catch (err) {
       next(err)
     }
