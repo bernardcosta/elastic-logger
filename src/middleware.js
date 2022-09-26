@@ -3,7 +3,7 @@ const config = require('./config')
 module.exports = {
   // send all errors to output in application/json format
   allErrorsRedirect: (err, req, res, next) => {
-    console.error(err)
+    console.log(err)
     res.status(err.status || 500).json({
       status: err.status,
       message: err.message,
