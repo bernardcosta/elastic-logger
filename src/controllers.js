@@ -9,10 +9,10 @@ module.exports = {
     try {
       var today = new Date()
 
-      var strDate = 'Y-m-d'
+      var strDate = 'Y.m.d'
         .replace('Y', today.getFullYear())
-        .replace('m', today.getMonth() + 1)
-        .replace('d', today.getDate())
+        .replace('m', String(today.getMonth() + 1)).padStart(2, '0')
+        .replace('d', String(today.getDate()).padStart(2, '0'))
 
       let index = `applogs-${req.params.channel}-${strDate}`
       let message = req.body.message
