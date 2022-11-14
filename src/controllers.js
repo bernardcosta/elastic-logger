@@ -14,7 +14,7 @@ module.exports = {
         .replace('m', String(today.getMonth() + 1)).padStart(2, '0')
         .replace('d', String(today.getDate()).padStart(2, '0'))
 
-      let index = `applogs-${req.params.channel}-${strDate}`
+      let index = `applogs-${strDate}`
       let message = req.body.message
       // remove message from the body output
       delete req.body['message']
