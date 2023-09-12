@@ -15,6 +15,8 @@ module.exports = {
         .replace('d', String(today.getDate()).padStart(2, '0'))
 
       let index = `applogs-${strDate}`
+      if (req.query.date == 'false') index = `applogs`
+      
       let message = req.body.message
       // remove message from the body output
       delete req.body['message']
