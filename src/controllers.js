@@ -17,6 +17,8 @@ module.exports = {
       let index = `applogs-${strDate}`
       if (req.query.date === 'false') index = `applogs`
 
+      if (!('context' in req.body)) req.body = {'context': req.body }
+
       let message = req.body.message
       // remove message from the body output
       delete req.body['message']
@@ -27,7 +29,7 @@ module.exports = {
           'channel': req.params.channel,
           'level_name': req.params.level,
           '@headers': req.headers,
-          'context': req.body,
+          ... req.body,
           'message': message
         }
       }).then((data) => {
