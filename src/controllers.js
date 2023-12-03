@@ -54,9 +54,10 @@ module.exports = {
             _id: data.body._id
           })
         }).catch(next)
-      } catch (err) {
-        next(err)
       }
+    } catch (err) {
+      next(err)
     }
+
   }
 }
