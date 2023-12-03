@@ -7,39 +7,56 @@ const client = new Client7({
 module.exports = {
   log: (req, res, next) => {
     try {
-      var today = new Date()
+      if (req.params.level === 'RAW') {
+        client.index({
+          index: req.params.index,
+          body: {
+            '@timestamp': new Date(),
+            ... req.body
+          }
+        }).then((data) => {
+          res.send({
+            status: "success",
+            _id: data.body._id
+          })
+        }).catch(next)
 
-      var strDate = 'Y.m.d'
-        .replace('Y', today.getFullYear())
-        .replace('m', String(today.getMonth() + 1).padStart(2, '0'))
-        .replace('d', String(today.getDate()).padStart(2, '0'))
+      } else {
 
-      let index = `applogs-${strDate}`
-      if (req.query.date === 'false') index = `applogs`
+        var today = new Date()
 
-      if (!('context' in req.body)) req.body = {'context': req.body }
+        var strDate = 'Y.m.d'
+          .replace('Y', today.getFullYear())
+          .replace('m', String(today.getMonth() + 1).padStart(2, '0'))
+          .replace('d', String(today.getDate()).padStart(2, '0'))
 
-      let message = req.body.message
-      // remove message from the body output
-      delete req.body['message']
-      client.index({
-        index: index,
-        body: {
-          '@timestamp': new Date(),
-          'channel': req.params.channel,
-          'level_name': req.params.level,
-          '@headers': req.headers,
-          ... req.body,
-          'message': message
-        }
-      }).then((data) => {
-        res.send({
-          status: "success",
-          _id: data.body._id
-        })
-      }).catch(next)
-    } catch (err) {
-      next(err)
+        let index = `applogs-${strDate}`
+        if (req.query.date === 'false') index = `applogs`
+
+        if (!('context' in req.body)) req.body = {'context': req.body }
+
+        let message = req.body.message
+        // remove message from the body output
+        delete req.body['message']
+        client.index({
+          index: index,
+          body: {
+            '@timestamp': new Date(),
+            'channel': req.params.channel,
+            'level_name': req.params.level,
+            '@headers': req.headers,
+            ... req.body,
+            'message': message
+          }
+        }).then((data) => {
+          res.send({
+            status: "success",
+            _id: data.body._id
+          })
+        }).catch(next)
+      } catch (err) {
+        next(err)
+      }
     }
   }
 }
