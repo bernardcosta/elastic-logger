@@ -9,7 +9,7 @@ module.exports = {
     try {
       if (req.params.level === 'RAW') {
         client.index({
-          index: req.params.index,
+          index: req.params.channel,
           body: {
             '@timestamp': new Date(),
             ... req.body
