@@ -1,1 +1,1 @@
-module.exports.levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+module.exports.levels = ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL", "RAW"]
