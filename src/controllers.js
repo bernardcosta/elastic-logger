@@ -29,15 +29,17 @@ module.exports = {
           .replace('Y', today.getFullYear())
           .replace('m', String(today.getMonth() + 1).padStart(2, '0'))
           .replace('d', String(today.getDate()).padStart(2, '0'))
-
-        let index = `applogs-${strDate}`
-        if (req.query.date === 'false') index = `applogs`
-
-        if (!('context' in req.body)) req.body = {'context': req.body }
-
+        
+        
+        let indexPrefix = req.params.channel 
+        let index = `${indexPrefix}-${strDate}`
         let message = req.body.message
         // remove message from the body output
         delete req.body['message']
+
+        if (req.query.date === 'false') index = indexPrefix
+        if (!('context' in req.body)) req.body = {'context': req.body }
+
         client.index({
           index: index,
           body: {
